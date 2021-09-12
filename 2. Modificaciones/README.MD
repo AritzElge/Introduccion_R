@@ -1,6 +1,6 @@
 # EJERCICIOS DE MODIFICIACIONES BÁSICAS EN R
 
-1. Cargar los datos de Train.
+1. Cargar los datos de train.csv
 
 2. Para la variable “MSZoning” eliminar de la variable “C (all)” el “ (all)” (sustituirlo por
 “”).
