@@ -18,6 +18,8 @@ datosPrice3 = read.csv("SalePrice3.csv",header = TRUE,sep = ",")
 # 2. Unir las tres tablas "pegando" una a continuación de otra
 ##############################################################
 
+datosPrice=cbind(datosPrice1, datosPrice2, datosPrice3)
+
 # 3. Cargar los datos de “CasasCaras”
 #####################################
 
