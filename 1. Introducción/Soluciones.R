@@ -1,144 +1,160 @@
-# Limpiamos el directorio de trabajo.
+# El primer paso, siempre, es limpiar nuestro area de trabajo.
 rm(list=ls())
 
-# Realizamos las primeras operaciones.
-25.3 + 35.1
-15 - 8.2
-12 * 4
-15 / 3
+# 1.Realizar las siguientes operaciones
+#######################################
+
+# Sumar
+25.3+35.1
+# Restar
+15-8.2
+# Multiplicar
+12*4
+# Dividir
+15/3
+# Raíz Cuadrada
 125^(1/2)
+#sqrt(125)
+ #Elevar a una potencia
 2^8
 
-# Creamos las variables.
-a = 25.3 + 35.1
-b = 15 - 8.2
-c = 12 * 4
-d = 15 / 3
-e = 125^(1/2)
-f = 2^8
+# 2.Crear Variables con las operaciones del ej. 1:
+##################################################
 
-# Creamos los vectores.
-p = 20:127
-q = c(5,12,25,8,46,52)
-r = c(35:80,10:100)
-s = c("a","b","c","d","e",1,2,3,4,5)
+a=25.3+35.1
+b=15-8.2
+c=12*4
+d=15/3
+e=sqrt(125)
+f=2^8
 
-# Realizamos las tareas pedidas.
-length(p)
-length(q)
-length(r)
-length(s)
+# 3.Crear los siguientes vectores:
+##################################
 
-# Seleccionamos los elementos del primer vector.
-p2=p[1:5]
+i <- 20:127                 # del 20 al 127
+j <- c(5,12,25,8,46,52)     # que incluya numeros concretos
+k <- c(35:80,10:100)        # del 35 al 80 y del 10 al 100
+l <- c("a","b","c","d","e",1:5)
 
-# Excluimos los 100 primeros elementos.
-p3=p[-c(1:100)]
+# 4.Realizar las siguientes tareas con vectores
+###############################################
 
-# Seleccionamos aquellos que sean mayores que 99.
-p4=p[p>=99]
+# Determinar el numero de elementos de cada vector creado en el ej. 3:
+length(i)
+length(j)
+length(k)
+length(l)
+# Crear otro vector seleccionando los primeros 5 elementos del primer vector:
+i_prima <- i[1:5]
+# Crear otro vector excluyendo los 100 primeros elementos del primer vector:
+i_duo <- i[-c(1:100)]
+# Crear un nuevo vector con los datos del primer vector mayores o iguales que 99:
+i_tri <- i[i >= 99]
+# Determinar la clase del primer vector creado en el ej.3 y el ej. 4:
+class(i)
+class(i_prima)
+# Transformar la clase del segundo vector a texto:
+j <- as.character(j)
+class(j)
 
-# Determinamos la clase
-class(p)
-class(s)
+# 5.Crear las siguientes listas y realizar las siguientes tareas:
+#################################################################
 
-# Cambiamos el formato.
-q=as.character(q)
+# Crear una lista con los nombres de 5 personas, su edad y su altura
+miLista <- list(nombre=c("Pablo","Manolo","Sofia","Lucía","Galio"), altura=c(169,175,150,143,130),edad=c(34,33,18,42,12))
+miLista
+# Mostrar de dos formas diferentes los atributos de la lista
+miLista["edad"]
+miLista[3]
+# Mostrar el segundo elemento de la lista
+miLista[2]
+# Mostrar el cuarto valor de ese elemento
+miLista[[2]][4]
+# Mostrar el último elemento de la primera variable
+# Recordar: ¡El doble corchete se utiliza para llamar vectores dentro de una lista!
+miLista[[1]][length(miLista[[1]])] 
 
-# Creamos la lista.
-Lista = list(nombres=c("Borja","Marie","Elena","Jose","Paco"), Edad = c(30,30,25,50,15), altura = c(165,170,185,150))
-Lista
+# 6.Crear una matriz de 4x4 y realizar las siguientes tareas:
+#############################################################
 
-# Mostramos los atributos.
-attributes(Lista)
-names(Lista)
+matriz_4x4 <- matrix(c(1,2,3,4, 11,12,13,14, 21,22,23,24),
+               nrow = 4, ncol = 4, byrow = TRUE)
+               
+# Mostrar la matriz en la consola.
+matriz_4x4
+# Extraer los atributos.
+attributes(matriz_4x4)
+# Crear una nueva matriz con las dos primeras filas.
+matriz_2f <- matriz_4x4[c(1:2),]
+matriz_2f
+# Crear una nueva matriz con las dos primeras columnas.
+matriz_2c <- matriz_4x4[,c(1:2)]
+matriz_2c
+# Crear una nueva matriz con las dos primeras filas y las tres primeras columnas.
+matriz_2y3 <- matriz_4x4[c(1:2),c(1:3)]
+matriz_2y3
+# Añadir una nueva columna.
+matriz_2y3 <- cbind(matriz_2y3, 0)
+# Añadir una nueva fila.
+matriz_2y3 <- rbind(matriz_2y3, 0)
 
-# Mostramos el segundo elemento de la lista.
-Lista[2]
+# 7. Crear un factor con las notas que se pueden sacar 
+# en la Universidad (SS, AP, NT, SB y MH) y realizar 
+# las siguientes tareas:
+######################################################
+notas_Universidad <- factor(c("SS", "AP", "NT", "SB", "MH"), levels=c("SS", "AP", "NT", "SB", "MH"))
+notas_Universidad
+# Calcular el número de opciones existentes.
+nlevels(notas_Universidad)
+# Mostrar los distintos niveles.
+levels(notas_Universidad)[1:5]
+# Mostrar el tercer nivel.
+levels(notas_Universidad)[3]
+# Sustituir "NT" por "Notable".
+levels(notas_Universidad)[3] <- "Notable"
 
-# Mostramos el cuarto elemento.
-Lista[[2]][4]
+# 8. Crear un DataFrame de 4 variables (Nombre del Jugador, 
+# Equipo, Posición y Edad) y 8 observaciones (Jugadores) y 
+# realizar las siguientes tareas:
+misdatos <- data.frame(nombre=c("Juan","Maria","Leticia","Jaime","Olatz","Pedro","Jorge","Lorena"),
+                    equipo=c("ATH","ATH","ATH","ATH","ATH","ATH","ATH","ATH"),
+                    Posicion=c("Delantero","Defensa","Defensa","Centrocampista","Delantero","Defensa","Delantero","Portero"),
+                    edad=c(21:28))
+# Visualizarlo por consola.
+misdatos
+# Contar el número de filas.
+nrow(misdatos)
+# Contar el número de columnas.
+ncol(misdatos)
+# Calcular las dimensiones.
+dim(misdatos)
+# Cambiar el nombre de las variables a (Nombre, Team, Especialidad y Años).
+colnames(misdatos) <- c("Nombre","Team", "Especialidad","Años")
+# Seleccionar aquellos jugadores mayores de 25 años.
+misdatos[misdatos$Años > 25,]
+# Seleccionar aquellos jugadores de menos de 25 años y mayores de 20.
+misdatos[misdatos$Años < 25 & misdatos$Años > 20,]
+# Seleccionar aquellos jugadores de menos de 25 años y que tengan una especialidad
+# determinada (según los jugadores creados).
+misdatos[misdatos$Años < 25 & misdatos$Especialidad == "Portero"]
+# Seleccionar aquellos jugadores de menos de 25 años o que tengan una especialidad
+# determinada (según los jugadores creados).
+misdatos[misdatos$Años < 25 & misdatos$Especialidad == "Defensa"]
 
-# Mostramos el quinto elemento de la primera variable.
-Lista[[1]][5]
+# 9. Crear las siguientes funciones: 
+####################################
 
-# Creamos la matriz pedida.
-matriz <- matrix(c(1,2,3,4, 11,12,13,14, 21,22,23,25),
-               nrow = 4, ncol = 4, byrow = TRUE,
-               dimnames = list(c("row1", "row2", "row3","row4"),
-                               c("V1", "V2", "V3","V4")))
-
-# Extraemos los atributos.
-attributes(matriz)
-
-# Seleccionamos las dos primeras filas.
-matriz[c(1,2),]
-
-# Seleccionamos las dos primeras columnas.
-matriz[,c(1,2)]
-
-# Seleccionamos las dos primeras filas y las dos primeras columnas.
-matriz[c(1,2),1:3]
-
-# Adimos una nueva columna.
-matriz = cbind(matriz, rnew=c(3,9,27,3^4))
-
-# Adimos una nueva fila.
-matriz = rbind(matriz, rnew=c(2,4,6,8,10))
-           
-# Creamos el factor.
-Notas = factor(c("SS", "AP", "NT", "SB", "MH"))
-
-# Mostramos los distintos niveles.
-levels(Notas)
-
-# Mostramos el tercer nivel.
-levels(Notas)[3]
-
-# Sustituimos NT por Notable.
-levels(Notas)[3] = "Notable"
-
-# Creamos el Data Frame.
-Datos <- data.frame(Jugador=c("Huertas","Granger","Vildoza","Tadas"), Equipo=c("Baskonia","Baskonia","Baskonia","Baskonia"), Especialidad=c("Base","Base","Base","Alero"), As=c(36,27,22,19) )
-
-# Nuemro de filas.
-nrow(Datos)
-
-# Numero de columnas.
-ncol(Datos)
-
-# Dimensiones.
-dim(Datos)
-
-# Cambiamos el nombre.
-colnames(Datos) = c("Nombre", "Team", "Especialidad", "As")
-
-# Seleccionamos a los mayores de 25.
-Mayores = Datos[Datos$As > 25,]
-
-# Menores de 25 y mayores de 20
-Jovenes = Datos[Datos$As<25 & Datos$As>20,]
-
-# Menores de 25 y Base.
-Base_Joven = Datos[Datos$Especialidad == "Base" & Datos$As<25,]
-
-# Menores de 25 o Base.
-Base_Joven = Datos[Datos$Especialidad == "Base" | Datos$As<25,]
-
-# Creamos las funciones.
-# Area del circulo.
+# Determine el área de un círculo.
 AreaCirculo = function(r) {pi*r^2}
 AreaCirculo(5)
-
-# Area del rectangulo
+# Determine el área de un rectángulo.
 AreaRectangulo = function(b,a) {b*a}
 AreaRectangulo(5,3)
-
-# Ecuación de segundo grado.
+# Resuelva una ecuación de segundo grado.
 Ecuacion = function(a,b,c,x) {a*x^2+b*x+c}
-Ecuacion(3,4,5,6)
+Ecuacion(2,5,4,6)
 
-# Perímetro circunferencia.
+# Determine el perímetro de una circunferencia.
 Perimetro = function(r) {2*pi*r}
 Perimetro(5)
 
