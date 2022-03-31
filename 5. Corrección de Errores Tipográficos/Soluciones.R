@@ -1,32 +1,50 @@
-datos=read.csv("train2.csv")
+# 0. Borramos lo anterior
+#########################
 
-# Mostramos los niveles.
+rm(list=ls())
+
+# 1.  Cargar los datos de "train2". 
+##################################
+
+datos <- read.csv("train2.csv")
+
+# 2. Mostrar los niveles de la variable "LotConfig". 
+####################################################
+datos$LotConfig = as.factor(datos$LotConfig)
 levels(datos$LotConfig)
 
-# Y el numero de elementos.
+# 3.  Mostrar el número de elementos de cada nivel. 
+###################################################
 table(datos$LotConfig)
 
-# Creamos el diccionario.
-correcto=c("Corner","CulDSac","FR2","FR3","Inside")
-
-# Creamos la nueva variable.
+# 4. Crear un diccionario con los términos correctos
+####################################################
+#   a) Corner
+#   b) CulDSac
+#   c) FR2
+#   d) FR3
+#   e) Inside
 library(stringdist)
-match = amatch(datos$LotConfig,correcto,maxDist=4)
-corregidos = correcto[match]
-res = cbind.data.frame(datos$LotConfig,corregidos)
+correcto = c("Corner","CulDSac","FR2","FR3","Inside")
 
-# Corregimos en train2.
+# 5. Crear una variable que corrija los errores topográficos
+# existentes, permitirle un máximo de 4 cambios de letras
+############################################################
+
+match = amatch(datos$LotConfig, correcto, maxDist=4)
+corregidos = correcto[match]
+res = cbind.data.frame(datos$LotConfig, corregidos)
+
+# 6. Corregir los errores en la tabla train2
+############################################
+
 datos=cbind(datos,res$corregidos)
 datos$LotConfig=NULL
 names(datos)[names(datos)=="res$corregidos"]="LotConfig"
+datos$LotConfig = as.factor(datos$LotConfig)
 
-# Comprobamos.
-levels(datos$LotConfig)
+# 7. Comprobar que se ha realizado correctamente
+################################################
+
 table(datos$LotConfig)
-
-# Cargamos los datos originales.
-datos2=read.csv("train.csv")
-levels(datos2$LotConfig)
-table(datos2$LotConfig)
-
-# Vemos que los cambios los ha hecho correctamente.
+levels(datos$LotConfig)
