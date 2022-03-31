@@ -6,11 +6,22 @@ rm(list=ls())
 # 1. Cargar los datos "SalePrice1", "SalePrice2", "SalePrice3"
 ##############################################################
 
+#Cargar los datos de SalePrice1:
+datosPrice1 = read.csv("SalePrice1.csv",header = TRUE,sep = ",")
+
+#Cargar los datos de SalePrice2:
+datosPrice2 = read.csv("SalePrice2.csv",header = TRUE,sep = ",")
+
+#Cargar los datos de SalePrice3:
+datosPrice3 = read.csv("SalePrice3.csv",header = TRUE,sep = ",")
+
 # 2. Unir las tres tablas "pegando" una a continuación de otra
 ##############################################################
 
 # 3. Cargar los datos de “CasasCaras”
 #####################################
+
+datosCaras = read.csv("CasasCaras.csv",header = TRUE,sep = ",")
 
 # 4. Enriquecer la tabla “CasasCaras” con las variables incluidas en datos1, 
 # datos2 y datos3, utilizando dos fórmulas diferentes.
@@ -18,6 +29,8 @@ rm(list=ls())
 
 # 5. Cargar datosH
 ##################
+
+datosH = read.csv("datosH.csv",header = TRUE,sep = ",")
 
 # 6. Realizar las siguientes uniones con dos funciones:
 #######################################################
