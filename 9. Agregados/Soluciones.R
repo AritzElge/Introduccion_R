@@ -83,7 +83,7 @@ ggplot(CountTipo,aes(x=MSZoning,y=SalePrice)) +
 ###################################################################
 
 # Unir tablas mediante "pegado":
-datosUnidos=cbind(MeanTipo, DesvTipo)
+datosUnidos=cbind(MeanTipo, DesvTipo$SalePrice)
 
 # 6. Cambiar los nombres de las variables de la tabla anterior y poner
 # Media y Desviacion.
@@ -94,7 +94,7 @@ summary(datosUnidos)
 
 # Cambiamos el primer SalePrice por Media
 # y el segundo SalePrice por Desviacion:
-colnames(datosUnidos) <- c("MSZoning", "Media", "MSZoning", "Desviacion")
+colnames(datosUnidos) <- c("MSZoning", "Media", "Desviacion")
 
 # Comprobamos el resultado
 summary(datosUnidos)
