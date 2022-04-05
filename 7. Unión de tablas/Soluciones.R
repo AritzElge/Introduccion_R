@@ -30,11 +30,15 @@ datosCaras = read.csv("CasasCaras.csv",header = TRUE,sep = ",")
 ############################################################################
 
 # Formula 1: Utilizando merge
-EstrellaEnriquecidos=merge(datosCaras,datosPrice,all.x=TRUE ,all.y=FALSE)
+EstrellaEnriquecidos=merge(datosCaras,datosPrice1,all.x=TRUE ,all.y=FALSE)
+EstrellaEnriquecidos=merge(EstrellaEnriquecidos,datosPrice2,all.x=TRUE ,all.y=FALSE)
+EstrellaEnriquecidos=merge(EstrellaEnriquecidos,datosPrice3,all.x=TRUE ,all.y=FALSE)
 
 # Formula 2: utilizando la libr. plyr (join)
 library(plyr)
-JoinIzquierda=join(datosCaras,datosPrice,type="left")
+JoinIzquierda=join(datosCaras,datosPrice1,type="left")
+JoinIzquierda=join(JoinIzquierda,datosPrice2,type="left")
+JoinIzquierda=join(JoinIzquierda,datosPrice3,type="left")
 
 # 5. Cargar datosH
 ##################
@@ -49,28 +53,42 @@ datosH = read.csv("datosH.csv",header = TRUE,sep = ",")
 ################################################################
 
 # Formula 1: Utilizando merge
-EstrellaEnriquecidos=merge(datosH,datosPrice,all.x=TRUE ,all.y=FALSE)
+EstrellaEnriquecidos=merge(datosCaras,datosPrice1,all.x=FALSE ,all.y=TRUE)
+EstrellaEnriquecidos=merge(EstrellaEnriquecidos,datosPrice2,all.x=FALSE ,all.y=TRUE)
+EstrellaEnriquecidos=merge(EstrellaEnriquecidos,datosPrice3,all.x=FALSE ,all.y=TRUE)
 
 # Formula 2: utilizando la libr. plyr (join)
-JoinIzquierda=join(datosH,datosPrice,type="left")
+library(plyr)
+JoinIzquierda=join(datosCaras,datosPrice1,type="right")
+JoinIzquierda=join(JoinIzquierda,datosPrice2,type="right")
+JoinIzquierda=join(JoinIzquierda,datosPrice3,type="right")
 
 #     b.  Recogiendo toda la información recogida en todas las tablas
 #####################################################################
 
 # Formula 1: Utilizando merge
-EstrellaEnriquecidos=merge(datosH,datosPrice,all.x=FALSE ,all.y=FALSE)
+EstrellaEnriquecidos=merge(datosCaras,datosPrice1,all.x=FALSE ,all.y=FALSE)
+EstrellaEnriquecidos=merge(EstrellaEnriquecidos,datosPrice2,all.x=FALSE ,all.y=FALSE)
+EstrellaEnriquecidos=merge(EstrellaEnriquecidos,datosPrice3,all.x=FALSE ,all.y=FALSE)
 
 # Formula 2: utilizando la libr. plyr (join)
-JoinIzquierda=join(datosH,datosPrice,type="full")
+library(plyr)
+JoinIzquierda=join(datosCaras,datosPrice1,type="full")
+JoinIzquierda=join(JoinIzquierda,datosPrice2,type="full")
+JoinIzquierda=join(JoinIzquierda,datosPrice3,type="full")
 
 #     c.  Recogiendo los elementos comunes.
 ###########################################
-
 # Formula 1: Utilizando merge
-EstrellaEnriquecidos=merge(datosH,datosPrice,all.x=TRUE ,all.y=TRUE)
+EstrellaEnriquecidos=merge(datosCaras,datosPrice1,all.x=TRUE ,all.y=TRUE)
+EstrellaEnriquecidos=merge(EstrellaEnriquecidos,datosPrice2,all.x=TRUE ,all.y=TRUE)
+EstrellaEnriquecidos=merge(EstrellaEnriquecidos,datosPrice3,all.x=TRUE ,all.y=TRUE)
 
 # Formula 2: utilizando la libr. plyr (join)
-JoinIzquierda=join(datosH,datosPrice,type="inner")
+library(plyr)
+JoinIzquierda=join(datosCaras,datosPrice1,type="inner")
+JoinIzquierda=join(JoinIzquierda,datosPrice2,type="inner")
+JoinIzquierda=join(JoinIzquierda,datosPrice3,type="inner")
 
 # 7. Seleccionar:
 #################
